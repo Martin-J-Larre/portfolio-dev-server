@@ -25,6 +25,11 @@ contactEmail.verify((error) => {
     console.log("Ready to Send");
   }
 });
+router.get("/", (req, res) =>{
+  res.json({
+    message: "Server running OK"
+  })
+});
 
 router.post("/contact", (req, res) => {
   const name = req.body.firstName + req.body.lastName;
