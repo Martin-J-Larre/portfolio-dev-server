@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", router);
-const PORT = 5000;
+const port = process.env.PORT || 5000;
 
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
@@ -54,6 +54,6 @@ router.post("/contact", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port http://localhost:${PORT}`);
+app.listen( port, () => {
+  console.log(`Server listening on port http://localhost:${ port }`);
 });
