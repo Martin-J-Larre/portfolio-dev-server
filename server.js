@@ -9,8 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/", router);
 const PORT = 5000;
-console.log(process.env.EMAIL_USER);
-console.log(process.env.EMAIL_PASS);
 
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
@@ -27,7 +25,11 @@ contactEmail.verify((error) => {
     console.log("Ready to Send");
   }
 });
-
+router.get("/", (req, res) =>{
+  res.json({
+    message: "Server running OK"
+  })
+})
 router.post("/contact", (req, res) => {
   const name = req.body.firstName + req.body.lastName;
   const email = req.body.email;
